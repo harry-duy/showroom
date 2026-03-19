@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/w3.css}">
+    <title>AB - Architects</title>
+</head>
+<body>
+<div th:replace="~{navbar}"></div>
+<div th:replace="~{header}"></div>
+<div class="w3-content w3-padding" style="max-width:1564px">
+    <div th:replace="~{products}"></div>
+    <div th:replace="~{about}"></div>
+</div>
+<div th:replace="~{footer}"></div>
+</body>
+</html>
