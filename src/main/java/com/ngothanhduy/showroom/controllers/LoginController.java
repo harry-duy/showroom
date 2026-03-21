@@ -1,6 +1,7 @@
 package com.ngothanhduy.showroom.controllers;
 
 import com.ngothanhduy.showroom.services.LoginService;
+import com.ngothanhduy.showroom.services.SettingsService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
@@ -13,17 +14,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class LoginController {
     private final LoginService loginService;
     private final Auth auth;
+    private final SettingsService settingsService;
 
-    public LoginController(LoginService loginService, Auth auth) {
+    public LoginController(LoginService loginService, Auth auth, SettingsService settingsService) {
         this.loginService = loginService;
         this.auth = auth;
+        this.settingsService = settingsService;
     }
 
     @GetMapping("/login")
-    public String loginGet(HttpServletRequest request) {
+    public String loginGet(HttpServletRequest request, Model model) {
         if (auth.isUserLoggedIn(request)) {
             return "redirect:/";
         }
+        model.addAttribute("companyName", settingsService.getCompanyName());
         return "login";
     }
 
@@ -44,7 +48,8 @@ public class LoginController {
         }
         model.addAttribute("errorMsg", "Wrong username or password")
                 .addAttribute("username", username)
-                .addAttribute("password", password);
+                .addAttribute("password", password)
+                .addAttribute("companyName", settingsService.getCompanyName());
         return "login";
     }
 }
