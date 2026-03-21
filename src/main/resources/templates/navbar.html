@@ -4,9 +4,11 @@
             <b>AB</b> Architects
         </a>
         <div class="w3-right">
-            <a href="#products" class="w3-bar-item w3-button w3-hide-small">Products</a>
-            <a href="#about" class="w3-bar-item w3-button w3-hide-small">About</a>
-            <a th:href="@{/login}" class="w3-bar-item w3-button w3-text-red">Login</a>
+            <a th:href="@{/#products}" class="w3-bar-item w3-button w3-hide-small">Products</a>
+            <a th:href="@{/#about}" class="w3-bar-item w3-button w3-hide-small">About</a>
+            <a th:href="${isUserLoggedIn} ? @{/logout} : @{/login}"
+               th:text="${isUserLoggedIn} ? 'Logout' : 'Login'"
+               class="w3-bar-item w3-button w3-text-red"></a>
         </div>
     </div>
 </div>
