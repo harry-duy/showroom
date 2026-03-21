@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 public class LoginController {
     private final LoginService loginService;
@@ -27,7 +28,8 @@ public class LoginController {
         if (auth.isUserLoggedIn(request)) {
             return "redirect:/";
         }
-        model.addAttribute("companyName", settingsService.getCompanyName());
+        model.addAttribute("companyName", settingsService.getCompanyName())
+                .addAttribute("isUserLoggedIn", false);
         return "login";
     }
 
@@ -49,7 +51,8 @@ public class LoginController {
         model.addAttribute("errorMsg", "Wrong username or password")
                 .addAttribute("username", username)
                 .addAttribute("password", password)
-                .addAttribute("companyName", settingsService.getCompanyName());
+                .addAttribute("companyName", settingsService.getCompanyName())
+                .addAttribute("isUserLoggedIn", false);
         return "login";
     }
 }

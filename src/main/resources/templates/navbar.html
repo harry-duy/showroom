@@ -1,7 +1,6 @@
 <div class="w3-top" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-        <a href="#home" class="w3-bar-item w3-button">
-            <b th:text="${companyName.shortName()}">AB</b>
+        <a th:href="@{/#home}" class="w3-bar-item w3-button">            <b th:text="${companyName.shortName()}">AB</b>
             <span th:text="${companyName.longName()}">Architects</span>
         </a>
         <div class="w3-right">
