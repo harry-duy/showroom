@@ -39,4 +39,15 @@ public class SettingsService {
             storage.saveFile(featureImage, "feature.jpg");
         }
     }
+
+    public String getAboutContent() {
+        return repo.loadAboutContent();
+    }
+
+    public void updateAboutContent(String aboutContent) throws Exception {
+        if (StringUtils.isNullOrBlank(aboutContent)) {
+            throw new Exception("About content cannot be null or blank");
+        }
+        repo.saveAboutContent(aboutContent);
+    }
 }

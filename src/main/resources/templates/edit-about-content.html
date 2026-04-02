@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/w3.css}">
+    <link rel="stylesheet" th:href="@{/showroom.css}">
+    <title th:text="|${companyName.shortName()} - ${companyName.longName()} - Edit about content|"></title>
+</head>
+<body>
+<div th:replace="~{navbar}"></div>
+<div class="w3-content w3-padding w3-card" style="max-width:800px; margin-top:80px;">
+    <div class="w3-container w3-padding-32">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Edit about content</h3>
+        <form method="post" th:action="@{/edit-about-content}">
+            <p>
+                <label for="aboutContent">About content:</label>
+                <textarea id="aboutContent" name="aboutContent" th:text="${aboutContent}"
+                          class="w3-input w3-border fixed-input" rows="10"></textarea>
+            </p>
+            <p th:if="${errorMsg}" th:text="${errorMsg}" class="w3-text-red"></p>
+            <div class="w3-center">
+                <button type="submit" class="w3-button w3-black">Save</button>
+                <a th:href="@{/#about}" class="w3-button w3-black">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

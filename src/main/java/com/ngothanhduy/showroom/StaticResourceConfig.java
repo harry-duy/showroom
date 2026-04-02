@@ -16,9 +16,15 @@ public class StaticResourceConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // Dùng absolute path thay vì relative
+        String absolutePath = Path.of(uploadsFolder)
+                .toAbsolutePath()  // thêm toAbsolutePath()
+                .toUri()
+                .toString();
+
         registry
                 .addResourceHandler("/files/**")
-                .addResourceLocations(Path.of(uploadsFolder).toUri().toString())
+                .addResourceLocations(absolutePath)
                 .setCacheControl(CacheControl.noCache());
     }
 }

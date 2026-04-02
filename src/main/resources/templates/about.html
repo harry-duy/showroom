@@ -1,5 +1,7 @@
-<div class="w3-container w3-padding-32" id="about">
+<div class="w3-container w3-padding-32" id="about" xmlns:th="http://www.w3.org/1999/xhtml">
     <h2 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h2>
-    <p>We are a passionate team of architects dedicated to creating beautiful and functional spaces.</p>
-    <a th:if="${isUserLoggedIn}" class="w3-button w3-blue">Edit</a>
+    <p th:text="${aboutContent}"></p>
+    <a th:if="${isUserLoggedIn}" th:href="@{/edit-about-content}"
+       class="w3-button w3-blue">Edit</a>
+    <p th:text="${aboutContent}" style="white-space: pre-wrap;"></p>
 </div>
